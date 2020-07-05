@@ -1,5 +1,6 @@
 // INstantiate the clssses
 const ui = new UI();
+    cocktail = new CocktailAPI();
 
 
 
@@ -25,8 +26,14 @@ function getCocktails(e) {
     const searchTerm = document.querySelector('#search').value;
 
     if(searchTerm === '') {
-        ui.printMessage('Please add somthing into the form', 'danger');
+        ui.printMessage('Please add something into the form', 'danger');
     } else {
-        console.log('Query the REST API');
+       cocktail.getDrinksByName(searchTerm)
+       .then(cocktails => {
+            if(cocktails.cocktails.drinks === null) {
+        ui.printMessage('There are no cocktails for that term', 'danger');
+        
+            }
+       })
     }
 }
