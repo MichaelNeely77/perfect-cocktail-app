@@ -25,7 +25,7 @@ function getCocktails(e) {
     const searchTerm = document.querySelector('#search').value;
 
     if(searchTerm === '') {
-        ui.printMessage();
+        ui.printMessage('Please add somthing into the form', 'danger');
     } else {
         console.log('Query the REST API');
     }
