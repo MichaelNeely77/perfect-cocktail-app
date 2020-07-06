@@ -31,8 +31,9 @@ function getCocktails(e) {
        cocktail.getDrinksByName(searchTerm)
        .then(cocktails => {
             if(cocktails.cocktails.drinks === null) {
-        ui.printMessage('There are no cocktails for that term', 'danger');
-        
+                ui.printMessage('There are no cocktails for that term', 'danger');
+            } else {
+                ui.displayDrinksWithIngredients(cocktails.cocktails.drinks);
             }
        })
     }
