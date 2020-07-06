@@ -12,7 +12,7 @@ class UI {
                 <div class="col-md-6">
                     <div class="card my-3">
                         <button type="button" data-id="${drink.idDrink}" class="favorite-btn btn btn-outline-info">+</button>
-                        <img class="card-img-top" src="https://${drink.strDrinkThumb}" alt="${drink.strDrink}" alt="${drnik.strDrink}">
+                        <img class="card-img-top" src="${drink.strDrinkThumb}" alt="${drink.strDrink}" alt="${drink.strDrink}">
                         <div class="card-body">
                             <h2 class="card-title text-center">${drink.strDrink}"</h2>
                             <p class="card-text font-weight-bold">Instructions:</p>
@@ -21,7 +21,7 @@ class UI {
                             </p>
                             <p class="card-text">
                                 <ul class="list-group">
-                                    <li class="list-group-item alert alert-danger">Ingredients</li>
+                                    <li class="list-group-item alert alert-danger">Ingredients</li>${this.displayingIngredients(drink)}
                                 </ul>
                             </p>
                             <p class="card-text font-weight-bold">Extra Information:</p>
@@ -40,6 +40,30 @@ class UI {
         })
     }
 
+    // Prints the ingredients
+    displayingIngredients(drink) {
+        // console.log(drink);
+        let ingredients = [];
+        for(let i = 1; i < 16; i++){
+            const ingredientMeasure = {};
+            if(drink[`strIngredient${i}`] !== null ) {
+                ingredientMeasure.ingredient = drink[`strIngredient${i}`];
+                ingredientMeasure.measure = drink[`strMeasure${i}`];
+                ingredients.push(ingredientMeasure);
+
+            }
+        }
+
+        // console.log(ingredients);
+        let ingredientsTemplate = '';
+        ingredients.forEach(ingredient => {
+            ingredientsTemplate += `
+                <li class="list-group-item">${ingredient.ingredient} - ${ingredient.measure}</li>
+
+            `;
+        });
+        return ingredientsTemplate;
+    }
     
     // Displays a cutom message
 
