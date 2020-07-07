@@ -28,8 +28,21 @@ function getCocktails(e) {
     if(searchTerm === '') {
         ui.printMessage('Please add something into the form', 'danger');
     } else {
-       cocktail.getDrinksByName(searchTerm)
-       .then(cocktails => {
+        // Server response form promise
+        let serverResponse;
+
+        // Type of response
+        const type = document.querySelector('#type').value;
+
+        // Evaluate the type of method
+        switch(type) {
+            case 'name':
+                serverResponse = cocktail.getDrinksByName(searchTerm);
+                break;
+        }
+
+       
+        serverResponse.then(cocktails => {
             if(cocktails.cocktails.drinks === null) {
                 ui.printMessage('There are no cocktails for that term', 'danger');
             } else {
