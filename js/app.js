@@ -15,6 +15,11 @@ function eventListeners() {
         searchForm.addEventListener('submit', getCocktails);
     }
     
+    // The results div listeners
+    const resultsDiv = document.querySelector('#results');
+    if(resultsDiv) {
+        resultsDiv.addEventListener('click', resultsDelegation);
+    }
 
 }
 
@@ -62,4 +67,15 @@ function getCocktails(e) {
             }
        })
     }
+}
+
+function resultsDelegation(e) {
+    e.preventDefault();
+
+    if(e.target.classList.contains('get-recipe')) {
+        cocktail.getSingleRecipe(e.target.dataset.id)
+            .then(recipe => {
+                console.log(recipe);
+            })
+    } 
 }
