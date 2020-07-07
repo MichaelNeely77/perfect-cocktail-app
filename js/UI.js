@@ -14,7 +14,7 @@ class UI {
                         <img class="card-img-top" src="${drink.strDrinkThumb}" alt="${drink.strDrink}" alt="${drink.strDrink}">
                         <div class="card-body">
                             <h2 class="card-title text-center">${drink.strDrink}"</h2>
-                            <a class="btn btn-success get-recipe" href="#" data-toggle="modal" data-id="${drink.idDrink}">Get Recipe</a>
+                            <a data-target="#recipe" class="btn btn-success get-recipe" href="#" data-toggle="modal" data-id="${drink.idDrink}">Get Recipe</a>
                         </div>
                     </div>
                 </div>
@@ -85,6 +85,20 @@ class UI {
             `;
         });
         return ingredientsTemplate;
+    }
+
+//Dipslays single recipe
+    displaySingleRecipe(recipe) {
+        // get variables
+        const modalTitle = document.querySelector('.modal-title'),
+            modalDescription = document.querySelector('.modal-body .description-text'),
+            modalIngredients = document.querySelector('.modal-body .ingredient-list .list-group');
+            console.log(recipe);
+            modalTitle.innerHTML = recipe.strDrink;
+            modalDescription.innerHTML = recipe.strInstructions;
+
+            
+            modalIngredients.innerHTML = this.displayingIngredients(recipe);
     }
     
     // Displays a cutom message

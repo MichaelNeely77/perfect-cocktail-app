@@ -75,7 +75,9 @@ function resultsDelegation(e) {
     if(e.target.classList.contains('get-recipe')) {
         cocktail.getSingleRecipe(e.target.dataset.id)
             .then(recipe => {
-                console.log(recipe);
+                // diplays recipe into modal
+                ui.displaySingleRecipe(recipe.recipe.drinks[0]);
+                // console.log(recipe);
             })
     } 
 }
