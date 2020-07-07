@@ -1,5 +1,27 @@
 class UI {
 
+    displayDrinks(drinks) {
+        const resultsWrapper = document.querySelector('.results-wrapper');
+        resultsWrapper.style.display = 'block';
+
+        const resultsDiv = document.querySelector('#results');
+
+        // loop through the drins
+        drinks.forEach(drink => {
+            resultsDiv.innerHTML += `
+                <div class="col-md-4">
+                    <div class="card my-3">
+                        <img class="card-img-top" src="${drink.strDrinkThumb}" alt="${drink.strDrink}" alt="${drink.strDrink}">
+                        <div class="card-body">
+                            <h2 class="card-title text-center">${drink.strDrink}"</h2>
+                            <a class="btn btn-success" href="#" data-toggle="modal" data-id="${drink.idDrink}">Get Recipe</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        })
+    }
+
     displayDrinksWithIngredients(drinks) {
 
         const resultsWrapper = document.querySelector('.results-wrapper');
@@ -84,6 +106,12 @@ class UI {
         setTimeout(() => {
             document.querySelector('.alert').remove();
         }, 3000)
+    }
+
+    // Clear previous results
+    clearResults() {
+        const resultsDiv = document.querySelector('#results');
+        resultsDiv.innerHTML = '';
     }
 
 }
