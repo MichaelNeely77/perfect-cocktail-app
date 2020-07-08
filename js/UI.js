@@ -1,5 +1,26 @@
 class UI {
 
+    // Print Categories
+    displayCategories() {
+        const categoryList = cocktail.getCategories()
+            .then(categories => {
+                const catList = categories.categories.drinks;
+                // Append a first option without value
+                const firstOption = document.createElement('option');
+                firstOption.textContent = '';
+                firstOption.value = '';
+                document.querySelector('#search').appendChild(firstOption);
+
+                // Append into the Select
+                catList.forEach(category => {
+                    const option = document.createElement('option');
+                    option.textContent = category.strCategory;
+                    PageTransitionEvent.value = category.strCategory.split(' ').join('_')
+                    document.querySelector('#search').appendChild(option);
+                })
+            })
+    }
+
     displayDrinks(drinks) {
         const resultsWrapper = document.querySelector('.results-wrapper');
         resultsWrapper.style.display = 'block';
@@ -97,7 +118,6 @@ class UI {
             modalTitle.innerHTML = recipe.strDrink;
             modalDescription.innerHTML = recipe.strInstructions;
 
-            
             modalIngredients.innerHTML = this.displayingIngredients(recipe);
     }
     
