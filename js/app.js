@@ -44,12 +44,14 @@ function getCocktails(e) {
         // Evaluate the type of method
         switch(type) {
             case 'name':
-                serverResponse = cocktail.getDrinksByName(searchTerm);
+                serverResponse = cocktail.getDrinksByName( searchTerm );
                 break;
             case 'ingredient':
-                serverResponse = cocktail.getDrinksByIngredient(searchTerm);
+                serverResponse = cocktail.getDrinksByIngredient( searchTerm );
                 break;
-                
+            case 'category':
+                serverResponse = cocktail.getDrinksByCategory( searchTerm );
+                break;
         }
 
         ui.clearResults();
