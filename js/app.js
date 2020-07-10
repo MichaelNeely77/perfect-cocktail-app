@@ -86,6 +86,17 @@ function resultsDelegation(e) {
                 // console.log(recipe);
             })
     } 
+
+    if(e.target.classList.contains('favorite-btn')) {
+        if(e.target.classList.contains('is-favorite')) {
+            e.target.classList.remove('is-favorite');
+            e.target.textContent = "+";
+
+        } else {
+            e.target.classList.add('is-favorite');
+            e.target.textContent = "-";
+        }
+    }
 }
 
 // Document Ready
