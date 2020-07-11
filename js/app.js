@@ -1,9 +1,7 @@
 // INstantiate the clssses
 const ui = new UI();
     cocktail = new CocktailAPI();
-
-
-
+    cocktailDB = new CocktailDB();
 
 
 // Add the event listeners
@@ -95,6 +93,18 @@ function resultsDelegation(e) {
         } else {
             e.target.classList.add('is-favorite');
             e.target.textContent = "-";
+
+            // get info
+            const cardBody = e.target.parentElement;
+
+            const drinkInfo = {
+                id: e.target.dataset.id,
+                name: cardBody.querySelector('.card-title').textContent,
+                image: cardBody.querySelector('.card-img-top').src
+            }
+            // console.log(drinkInfo);
+            // add into storage
+            cocktailDB.saveIntoDB(drinkInfo);
         }
     }
 }
