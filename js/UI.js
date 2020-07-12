@@ -167,7 +167,7 @@ class UI {
                     </a>
                 </td>
                 <td>
-                    <a href="#" data-toggle="modal" data-target="#recipe" data-id="${drink.id}" class="btn btn-danger remove-recipe">
+                    <a href="#" data-id="${drink.id}" class="btn btn-danger remove-recipe">
                         Remove
                     </a>
                 </td>
@@ -175,6 +175,10 @@ class UI {
 
             favoritesTable.appendChild(tr);
         })
+    }
+    // remove favorite from DOM
+    removeFavorite(element) {
+        element.remove();
     }
 
 
