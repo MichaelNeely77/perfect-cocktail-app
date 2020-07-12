@@ -136,6 +136,9 @@ function documentReady() {
             }
             if(e.target.classList.contains('remove-recipe')) {
                 ui.removeFavorite(e.target.parentElement.parentElement);
+
+                // remove from local storage
+                cocktailDB.removeFromDB( e.target.dataset.id);
             }
 
         })
