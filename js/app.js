@@ -90,6 +90,9 @@ function resultsDelegation(e) {
             e.target.classList.remove('is-favorite');
             e.target.textContent = "+";
 
+            // Remove from storage
+            cocktailDB.removeFromDB( e.target.dataset.id);
+
         } else {
             e.target.classList.add('is-favorite');
             e.target.textContent = "-";
@@ -111,6 +114,9 @@ function resultsDelegation(e) {
 
 // Document Ready
 function documentReady() {
+    // Display on load the favorites forms storage
+    ui.isFavorite();
+
     // Select the search category
     const searchCategory = document.querySelector('.search-category');
     if(searchCategory) {
