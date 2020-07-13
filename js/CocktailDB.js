@@ -34,5 +34,4 @@ class CocktailDB {
         return drinks;
     }
 
-
 }
